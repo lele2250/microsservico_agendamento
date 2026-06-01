@@ -10,8 +10,11 @@ Arquitetura escolhida:
 Projeto está dentro de uma pasta chamada src dentro dela vai ter:
 
 •	Um arquivo modelos -> agendamento.ts (Definir o formato dos dados (tipagem)
+
 • Um arquivo rotas -> agendamentoRotas.ts (Rotas que a API vai fazer)
+
 •	Um arquivo servicos-> AgendamentoServico.ts e regras.ts (Gerenciar os dados e as regras de negócio)  
+
 •	E um campo chamado serviço.ts (subir o servidor)
 
 Estrutura de dados:
@@ -39,20 +42,33 @@ Comandos para rodar o programa:
 Criar um agendamento (POST) com a URL : http://localhost:3000/api/agendamentos
 
 { 
+
 "corretorId": "c-101", 
+
 "imovelId": "im-553", 
+
 "inicio": "2026-06-10T14:00:00-03:00",
+
  "duracaoMinutos": 60
+
 }
 
 Saida: 
+
 { 
+
 "agendamentoId": "ag-001", 
+
 "corretorId": "c-101",
- "imovelId": "im-553", 
+
+"imovelId": "im-553", 
+
 "inicio": "2026-06-10T14:00:00-03:00",
- "fim": "2026-06-10T15:00:00-03:00", 
+ 
+"fim": "2026-06-10T15:00:00-03:00", 
+
 "status": "confirmado"
+
 }
 
 OBS: lembre que para o programa dá certo o servidor tem que está ligado 
@@ -61,29 +77,45 @@ Consultar agendamentos (GET) com a URL: http://localhost:3000/api/agendamentos?c
 
 Esse endpoint serve para informar quais são os horários agendados de um corretor em uma determinada data.
 
-Na query qual vai ser o ID do corretor e a data que marcou 
+OBS: Na query vai ter qual vai ser o ID do corretor e a data que marcou, ou seja, é como se fosse um filtro.
 
 Ex: quero saber qual é a agenda do corretor com id 101 com a data 2026-06-10
 
 Saída:
 [
+ 
   {
+  
     "agendamentoId": "ag-1780272089268",
+    
     "corretorId": "c-101",
+    
     "imovelId": "im-553",
+    
     "inicio": "2026-06-10T08:00:00-04:00",
+    
     "fim": "2026-06-10T10:00:00-03:00",
+    
     "status": "confirmado"
+  
   },
  
   {
+  
     "agendamentoId": "ag-1780269357012",
+    
     "corretorId": "c-101",
+    
     "imovelId": "im-553",
+    
     "inicio": "2026-06-10T14:00:00-03:00",
+    
     "fim": "2026-06-10T15:00:00-03:00",
+    
     "status": "confirmado"
+  
   }
+
 ]
 
 

@@ -93,6 +93,7 @@ OBS: Na Query String (URL) enviamos o ID do corretor e a data escolhida para fun
 Ex: quero saber qual é a agenda do corretor com id 101 com a data 2026-06-10
 
 Saída:
+
 [
  
   {

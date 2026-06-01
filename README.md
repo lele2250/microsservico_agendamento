@@ -77,7 +77,7 @@ Consultar agendamentos (GET) com a URL: http://localhost:3000/api/agendamentos?c
 
 Esse endpoint serve para informar quais são os horários agendados de um corretor em uma determinada data.
 
-OBS: Na query vai ter qual vai ser o ID do corretor e a data que marcou, ou seja, é como se fosse um filtro.
+OBS: Na Query String (URL) enviamos o ID do corretor e a data escolhida para funcionar como um filtro.
 
 Ex: quero saber qual é a agenda do corretor com id 101 com a data 2026-06-10
 
@@ -86,33 +86,33 @@ Saída:
  
   {
   
-    "agendamentoId": "ag-1780272089268",
+   "agendamentoId": "ag-1780272089268",
     
-    "corretorId": "c-101",
+   "corretorId": "c-101",
     
-    "imovelId": "im-553",
+   "imovelId": "im-553",
     
-    "inicio": "2026-06-10T08:00:00-04:00",
+   "inicio": "2026-06-10T08:00:00-03:00",
     
-    "fim": "2026-06-10T10:00:00-03:00",
+   "fim": "2026-06-10T10:00:00-03:00",
     
-    "status": "confirmado"
+   "status": "confirmado"
   
   },
  
   {
   
-    "agendamentoId": "ag-1780269357012",
+   "agendamentoId": "ag-1780269357012",
     
-    "corretorId": "c-101",
+   "corretorId": "c-101",
     
-    "imovelId": "im-553",
+   "imovelId": "im-553",
     
-    "inicio": "2026-06-10T14:00:00-03:00",
+   "inicio": "2026-06-10T14:00:00-03:00",
     
-    "fim": "2026-06-10T15:00:00-03:00",
+   "fim": "2026-06-10T15:00:00-03:00",
     
-    "status": "confirmado"
+   "status": "confirmado"
   
   }
 

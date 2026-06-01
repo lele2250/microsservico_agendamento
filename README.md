@@ -7,7 +7,7 @@ Os agendamentos podem ter no mínimo 30 minutos e no máximo 180 minutos. Caso p
 
 Pré-requisito:
 
-Para conseguir rodar esse projeto no seu computador, você vai precisar ter instalado:
+Para conseguir rodar esse projeto no computador, precisará ter instalado:
 
 Node.js (versão estável).
 
@@ -19,7 +19,7 @@ Arquitetura escolhida:
 
 Projeto está dentro de uma pasta chamada src dentro dela vai ter:
 
-•	Um pasta modelos -> agendamento.ts (Definir o formato dos dados (tipagem)
+•	Um pasta modelos -> agendamento.ts (Definir o formato dos dados (tipagem))
 
 • Um pasta rotas -> agendamentoRotas.ts (Rotas que a API vai fazer)
 
@@ -31,7 +31,7 @@ Estrutura de dados:
 
 Nesse projeto, os dados são armazenados usando um array (lista) de objetos do tipo Agendamento, mantido na memória do servidor.
 
-Os dados ficam armazenados dentro de uma variável enquanto o servidor estiver rodando. Quando o servidor reinicia, todos os dados são apagados e precisam ser inseridos novamente.
+Os dados ficam armazenados dentro de uma variável enquanto o servidor estiver rodando e quando o servidor reinicia, todos os dados são apagados e precisam ser inseridos novamente.
 
 Essa estrutura é ideal para esse tipo de programa porque o array permite percorrer todos os registros e detectar conflitos, já que é necessário comparar vários agendamentos existentes.
 
@@ -40,6 +40,7 @@ As operações de inserção são feitas usando push, e as consultas percorrem o
 Comandos para rodar o servidor:
 
 Os comandos para rodar o servidor são: 
+
 npm install (para instalar as dependdências do TypeScript) e npm run dev (para rodra o servidor)
 
 O servidor está no arquivo server.ts, onde é criada uma instância do Express armazenada na variável app. Em seguida, as rotas são conectadas ao servidor usando: app.use("/api/agendamentos", agendamentoRoutes);
@@ -51,6 +52,8 @@ Por fim, o servidor é iniciado com: app.listen(3000, ...); definindo a porta em
 Comandos para rodar o programa:
 
 Criar um agendamento (POST) com a URL : http://localhost:3000/api/agendamentos
+
+Entrada:
 
 { 
 
@@ -64,7 +67,7 @@ Criar um agendamento (POST) com a URL : http://localhost:3000/api/agendamentos
 
 }
 
-Saida: 
+Saída: 
 
 { 
 
@@ -130,7 +133,9 @@ Saída:
 
 ]
 
+Este microsserviço foi desenvolvido com o objetivo de oferecer uma solução eficiente, consistente e de fácil manutenção para o gerenciamento de agendamentos. A escolha do TypeScript junto ao Node.js e Express garantiu uma estrutura organizada e fortemente tipada, ideal para evitar erros comuns em tempo de execução.
 
+Ao centralizar as validações de horário e de duração na camada de serviços, o sistema protege as regras de negócio da empresa e assegura uma excelente experiência para o usuário, evitando conflitos de agenda e oferecendo alternativas de horários disponíveis de forma inteligente.
 
 
 

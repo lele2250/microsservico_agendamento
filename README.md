@@ -39,7 +39,8 @@ As operações de inserção são feitas usando push, e as consultas percorrem o
 
 Comandos para rodar o servidor:
 
-O comando para rodar o servidor é: npm run dev
+O comando para rodar o servidor é: 
+npm install (para instalar as dependdências) e npm run dev (para rodra o servidor)
 
 O servidor está no arquivo server.ts, onde é criada uma instância do Express armazenada na variável app. Em seguida, as rotas são conectadas ao servidor usando: app.use("/api/agendamentos", agendamentoRoutes);
 

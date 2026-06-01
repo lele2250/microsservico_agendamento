@@ -25,7 +25,7 @@ Projeto está dentro de uma pasta chamada src dentro dela vai ter:
 
 •	Um pasta servicos-> AgendamentoServico.ts e regras.ts (Gerenciar os dados e as regras de negócio)  
 
-•	E um arquivo chamado serviço.ts (subir o servidor)
+•	E um arquivo chamado server.ts (subir o servidor)
 
 Estrutura de dados:
 

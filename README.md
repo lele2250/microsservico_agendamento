@@ -5,6 +5,16 @@ Esse projeto é um aplicativo de microsserviço de agendamento, criado em Node.j
 
 Os agendamentos podem ter no mínimo 30 minutos e no máximo 180 minutos. Caso passe desse limite, o programa informa que a duração é inválida. O horário de início permitido é 08:00 e o horário final é 19:00 (horário local de Brasília - América/São Paulo). Caso o usuário tente marcar fora desse horário, o sistema informa que está fora do horário permitido.
 
+Pré-requisito:
+
+Para conseguir rodar esse projeto no seu computador, você vai precisar ter instalado:
+
+Node.js (versão estável).
+
+TypeScript (instalado no computador ou nas dependências do projeto).
+
+Uma ferramenta para testar as rotas, como a extensão Thunder Client no VS Code.
+
 Arquitetura escolhida: 
 
 Projeto está dentro de uma pasta chamada src dentro dela vai ter:

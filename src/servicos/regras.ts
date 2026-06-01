@@ -1,4 +1,4 @@
-import { Agendamento } from "../models/agendamento";
+import { Agendamento } from "../modelos/agendamento";
 const HORARIO_INICIO = 8;
 const HORARIO_FIM = 19;
 
@@ -24,7 +24,7 @@ export function validarJanela(
 }
 
 
-//import { Agendamento } from "../models/agendamento";
+//import { Agendamento } from "../modelos/agendamento";
 
 export function temConflito(
   existentes: Agendamento[],

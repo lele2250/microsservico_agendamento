@@ -1,34 +1,32 @@
-import { Agendamento } from "../models/agendamento";
+import { Agendamento } from "../modelos/agendamento";
 import { Router, Request, Response } from "express";
 
 import {
   addAgendamento,
   getAgendamentos
-} from "../services/agendamentoService";
+} from "../servicos/agendamentoServicos";
 
 import {
   validarDuracao,
   validarJanela,
   temConflito,
   sugerirHorarios
-} from "../services/regras";
+} from "../servicos/regras";
 
 const router = Router();
 
-/* =========================================
-   ✅ POST - Criar agendamento
-========================================= */
+//POST - Criar agendamento
 router.post("/", (req: Request, res: Response) => {
 
-  // 📌 pega dados da requisição
+  // pega dados da requisição como o ID do corretor, o imovel, inicio e a duração em minutos
   const { corretorId, imovelId, inicio, duracaoMinutos } = req.body;
 
-  // ✅ valida payload
+  // payload: validando o dado que o usuário informar
   if (!corretorId || !inicio || !duracaoMinutos) {
     return res.status(400).json({ erro: "Payload inválido" });
   }
 
-  // ✅ valida duração
+  // valida duração
   if (!validarDuracao(duracaoMinutos)) {
     return res.status(400).json({ erro: "Duração inválida" });
   }
@@ -39,7 +37,7 @@ router.post("/", (req: Request, res: Response) => {
     inicioDate.getTime() + duracaoMinutos * 60000
   );
 
-  // ✅ valida janela (08h às 19h)
+  // valida janela (08h às 19h)
   if (!validarJanela(inicioDate, fimDate)) {
     return res.status(400).json({
       erro: "Fora do horário permitido"
@@ -48,7 +46,7 @@ router.post("/", (req: Request, res: Response) => {
 
   const existentes = getAgendamentos();
 
-  // ✅ verifica conflito
+  // verifica conflito
   if (temConflito(existentes, inicioDate, fimDate, corretorId)) {
 
     const sugestoes = sugerirHorarios(
@@ -65,37 +63,36 @@ router.post("/", (req: Request, res: Response) => {
     });
   }
 
-  // ✅ cria agendamento (mantendo timezone correto)
+  // cria agendamento (mantendo timezone correto)
   const agendamento: Agendamento = {
     agendamentoId: `ag-${Date.now()}`,
     corretorId,
     imovelId,
 
-    // ✅ mantém horário exatamente como veio
+    // mantém horário exatamente como veio
     inicio: inicio,
 
-    // ✅ calcula fim sem quebrar timezone
+    // calcula fim sem quebrar timezone
     fim: formatarDataLocal(fimDate),
 
     status: "confirmado"
   };
 
-  // ✅ salva em memória
+  // salva em memória
   addAgendamento(agendamento);
 
   return res.status(201).json(agendamento);
 });
 
-/* =========================================
-   ✅ GET - Listar por corretor e dia
-========================================= */
+// GET - Listar por corretor e dia
+
 router.get("/", (req: Request, res: Response) => {
 
   const { corretorId, data } = req.query;
 
   const result = getAgendamentos()
 
-    // ✅ filtro correto (SEM BUG DE TIMEZONE)
+    // filtro 
     .filter(a => {
       return (
         a.corretorId === corretorId &&
@@ -103,7 +100,7 @@ router.get("/", (req: Request, res: Response) => {
       );
     })
 
-    // ✅ ordenação cronológica
+    // ordenação cronológica
     .sort((a, b) => {
       return (
         new Date(a.inicio).getTime() -
@@ -114,9 +111,8 @@ router.get("/", (req: Request, res: Response) => {
   res.json(result);
 });
 
-/* =========================================
-   ✅ Função auxiliar - formata data
-========================================= */
+// Função auxiliar - formata data
+
 function formatarDataLocal(date: Date): string {
   const ano = date.getFullYear();
   const mes = String(date.getMonth() + 1).padStart(2, "0");
@@ -125,7 +121,7 @@ function formatarDataLocal(date: Date): string {
   const horas = String(date.getHours()).padStart(2, "0");
   const minutos = String(date.getMinutes()).padStart(2, "0");
 
-  // ✅ força timezone Brasil (-03:00)
+  //força timezone Brasil (-03:00)
   return `${ano}-${mes}-${dia}T${horas}:${minutos}:00-03:00`;
 }
 

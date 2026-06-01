@@ -1,5 +1,5 @@
 import express from "express";
-import agendamentoRoutes from "./routes/agendamentoRoutes";
+import agendamentoRotas from "./rotas/agendamentoRotas";
 
 const app = express();
 
@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 // rota principal da API
-app.use("/api/agendamentos", agendamentoRoutes);
+app.use("/api/agendamentos", agendamentoRotas);
 
 // inicia o servidor
 app.listen(3000, () => {

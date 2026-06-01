@@ -9,13 +9,13 @@ Arquitetura escolhida:
 
 Projeto está dentro de uma pasta chamada src dentro dela vai ter:
 
-•	Um arquivo modelos -> agendamento.ts (Definir o formato dos dados (tipagem)
+•	Um pasta modelos -> agendamento.ts (Definir o formato dos dados (tipagem)
 
-• Um arquivo rotas -> agendamentoRotas.ts (Rotas que a API vai fazer)
+• Um pasta rotas -> agendamentoRotas.ts (Rotas que a API vai fazer)
 
-•	Um arquivo servicos-> AgendamentoServico.ts e regras.ts (Gerenciar os dados e as regras de negócio)  
+•	Um pasta servicos-> AgendamentoServico.ts e regras.ts (Gerenciar os dados e as regras de negócio)  
 
-•	E um campo chamado serviço.ts (subir o servidor)
+•	E um arquivo chamado serviço.ts (subir o servidor)
 
 Estrutura de dados:
 

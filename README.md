@@ -75,6 +75,7 @@ Saída:
     "fim": "2026-06-10T10:00:00-03:00",
     "status": "confirmado"
   },
+ 
   {
     "agendamentoId": "ag-1780269357012",
     "corretorId": "c-101",
